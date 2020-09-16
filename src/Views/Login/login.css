@@ -1,0 +1,20 @@
+.div-form.center {
+    align-items: center;
+}
+
+.form-container{
+    padding: 10px 10px 10px 10px;
+    border: black 1px solid;
+    border-radius: 5px;
+    margin-top: 15vh;
+    margin-bottom: 15vh;
+    size: 110vh;
+}
+
+.button-submit {
+    width: 120px;
+}
+
+.input-size{
+    width: 350px;
+}
