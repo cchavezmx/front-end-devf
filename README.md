@@ -15,10 +15,9 @@ You will also see any lint errors in the console.
 
 
 ## Mis Apuntes React 🚀 
-____________________________________________
-
 
 ### `EL USO DE CONTEXT`
+___
 
 Creamos en la raiz una carpeta llamada Context, creamos una funcion de react que nos ayudara intercambiar parametros dentro de todo el proyecto. 
 
