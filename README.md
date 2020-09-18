@@ -46,4 +46,20 @@ Antes hay que aclarar que se crearon dos aplicaciones tipo flecha. una barra pub
 
 Y de esta forma si el valor de isAuth cambia de falso a verdadero renderizamos la barra de navegacion de publico a privado.
 
+### `EL USO DE useEffect`
+___
+
+Este hook esta al "pendiente" de algun cambio valor de una variable, declarada dentro del arreglo, si el arreglo se deja vacio quiere decir que el contenido declarado dentro del nuestro hook se inicializara una vez al acceder a nuestro componente se declara de la siguiente forma: 
+
+````javascript
+  useEffect(() => {
+    const item = localStorage.getItem('tokenSaurio')
+    if(item) {
+      setToken(item);
+      setIsAuth(true)
+    }
+  }, [])
+````
+En este ejemplo y uso que se le da dentro de esta aplicación, se declara useEffect dentro de la funcion le damos un valor al token y estado del usuario (setIsAuth)
+al declarar el arreglo como vacio, le decimos a nuestra aplicacion que solo se ejecute una vez. 
 
