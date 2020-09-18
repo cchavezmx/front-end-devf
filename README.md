@@ -17,10 +17,10 @@ You will also see any lint errors in the console.
 ### `EL USO DE CONTEXT`
 Creamos en la raiz una carpeta llamada Context, creamos una funcion de react que nos ayudara intercambiar parametros dentro de todo el proyecto. 
 
-###1
+### 1️⃣
 En App, agreamos la capa que envuelve a todas los demas componentes y son entre estos podemos intercambiar valores en las variables del contexto
 
-###2
+### 2️⃣
 Con el uso de useState podemos setear estas varabiles, gracias a sus estructura:
 
 ```
