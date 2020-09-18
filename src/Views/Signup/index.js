@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { Redirect } from 'react-router-dom'
+import axios from 'axios'
 import { Button, Form, FormGroup, Label, Input, Container, FormText } from 'reactstrap';
 import './Signup.css'
 
@@ -10,6 +12,7 @@ function Signup() {
     const [lastName, setlastName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [isSignup, setisSignup]  = useState('') // se agrega este estado para poder redireccionar la pagina cuando el registro sea exitoso
 
 /* 2) Enlazar los estados
        2.1 Para hacer esto, en el from le agregamos el valor que queremos enlazar (Linea 30)
@@ -18,16 +21,29 @@ function Signup() {
 */ 
 // 3) Habilitar el handleForm que tomara los valos de Form
 
-    const handleForm = (e) => {
+    const handleForm = async (e) => {
         e.preventDefault() // Con esta linea prevenimos que actualice el formulario
         const jsonSend = {
             first_name: firstName,
             last_name: lastName,
-            emial: email,
+            email: email,
             password: password,
         }
-        console.log(jsonSend)
+        const SIGNUP_URI = `${process.env.REACT_APP_BACKEND_BASE_URL}/signup`
+        try {
+         const res = await axios.post(SIGNUP_URI, jsonSend)
+         if(res.status === 200)
+            alert('Registro Exitoso')
+            setisSignup(true)
+        } catch (error) {
+            console.log(error)
+            alert("El correo ya está registrado")       
+        }        
     }
+        // Usamos Redirect de react-router-dom
+        if(isSignup){
+            return <Redirect to="/" />
+        }
 
     return (      
         <React.Fragment>
