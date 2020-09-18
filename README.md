@@ -16,26 +16,31 @@ You will also see any lint errors in the console.
 
 ### `EL USO DE CONTEXT`
 Creamos en la raiz una carpeta llamada Context, creamos una funcion de react que nos ayudara intercambiar parametros dentro de todo el proyecto. 
-### 1
-En App, agreamos la capa que envuelve a todas los demas componentes y son entre estos con los que podemos intercambiar valor de varibles.
-### 2
-Con el uso de useState podemos setear estas varabiles, gracias a sus estructura podemos setear estos parametros.
+*[1]
+En App, agreamos la capa que envuelve a todas los demas componentes y son entre estos podemos intercambiar valores en las variables del contexto
 
-# const [value, setValue] = useState('')
+*[2]
+Con el uso de useState podemos setear estas varabiles, gracias a sus estructura:
 
-En esta aplicacion en ejemplo del uso de context se da en la vista de Login que una vez que las creedenciales son correctas cambiar el estado de la variable (Linea 24 de la vista de Login.) de setIsAuth a true, incializada en false desde el contexto, al pasar el valor de false a true a la varaible setIsAuth, de inmediato la variable isAuth ligada a setIsAuth cambia y con este valor dentro de la barra de navegacion hacemos uso de esta variable de la siguiente forma: 
+```
+const [value, setValue] = useState('')
 
-En la barra de navegacion se crean dos aplicaciones tipo flecha. una barra publica, y una barra privada.
-y en la linea 71 agragamos los siguiente: 
+```
 
-  return (
+En esta aplicacion un ejemplo del uso de context se da en la vista de Login que una vez que las creedenciales son correctas cambia el estado de la variable (Linea 24 de la vista de Login.) de setIsAuth a true, hay que notar que desde el contexto esta variable se la da el valor de false, al pasar el valor de false a true a la varaible setIsAuth, de inmediato la variable isAuth ligada a setIsAuth cambia y con este valor dentro de la barra de navegacion hacemos uso de esta variable de la siguiente forma: 
+ 
+``` 
+   return (
     <React.Fragment>
       { isAuth 
           ? authNavbar()
           : publicNavbar()}
     </React.Fragment>
   )
-  
-  De esta forma si el valor de isAuth cambia de falso a verdadero renderizamos la barra de navegacion de publico a privado.
-  
-   
+
+```
+Antes hay que aclarar que se crearon dos aplicaciones tipo flecha. una barra publica, y una barra privada.
+
+Y de esta forma si el valor de isAuth cambia de falso a verdadero renderizamos la barra de navegacion de publico a privado.
+
+
