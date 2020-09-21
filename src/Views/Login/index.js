@@ -3,18 +3,13 @@ import { AuthContext } from '../../context/AuthContext'
 import axios from 'axios'
 import { Button, Form, FormGroup, Label, Input, InputGroup, InputGroupText, InputGroupAddon, Container, Col, FormText } from 'reactstrap';
 import './login.css'
-import decode from 'jwt-decode'
+
 
 function Login() {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const { setToken, setIsAuth, setUser } = useContext(AuthContext)
-
-    const loginUser = async (_item) => {
-        const user = await decode(_item)
-        setUser(user)
-      }
+    const { loginUser } = useContext(AuthContext)
 
     const handleForm = async (e) => {
         e.preventDefault()
@@ -22,11 +17,7 @@ function Login() {
             const LOGIN_URI = `${process.env.REACT_APP_BACKEND_BASE_URL}/login`
             try {
             const res = await axios.post(LOGIN_URI, jsonSend)
-            localStorage.setItem('tokenSaurio', res.data.token)
-            const tokenItem = localStorage.getItem('tokenSaurio')
-            setToken(tokenItem)
-            setIsAuth(true)
-            loginUser(tokenItem)
+            loginUser(res.data.token)
                                                   
             } catch (error) {
                 console.log(error)

@@ -37,7 +37,7 @@ const AuthContextProvider = (props) => {
     <AuthContext.Provider value={{
      token, setToken,
      isAuth, setIsAuth,
-     setUser, user
+     user, loginUser, logoutUser
      
      }}>
       { props.children }
