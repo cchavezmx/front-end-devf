@@ -9,7 +9,6 @@ function Logout() {
 
   // SETEAR LAS VARIABLES setToken y setIsAuth en vacio y en falso
     const {setToken, setIsAuth} = useContext(AuthContext)
-
     setToken('')
     setIsAuth(false)
 

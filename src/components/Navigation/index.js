@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { Redirect } from 'react-router-dom'
+import { Redirect, Link } from 'react-router-dom'
 import { AuthContext } from '../../context/AuthContext'
 import {
   Collapse,
@@ -10,7 +10,9 @@ import {
   NavItem,
   NavLink,
   NavbarText
+  
 } from 'reactstrap';
+
 
 /* Para usar useContext, necesitamos agregar la etiqueta del contexto en el app que es de donde se reenderiza nuestra aplicacion
 despues de agregar la etiqueta del context, agregamos en donde vamos a usar las propiedades del context
@@ -22,7 +24,7 @@ y la segunda que es la variable que contiene los metodos de la funcion context *
 
 const Navigation = (props) => {
   const [isOpen, setIsOpen] = useState(false);
-  const { isAuth } = useContext(AuthContext)
+  const { isAuth, user } = useContext(AuthContext)
    
   const toggle = () => setIsOpen(!isOpen);
 
@@ -48,10 +50,11 @@ const Navigation = (props) => {
   }
 
   const authNavbar = () =>{
+
     return (
       <div className="body">
         <Navbar color="navbar navbar-dark bg-dark" light expand="md">
-          <NavbarBrand href="/">Mi LOGO</NavbarBrand>
+          <NavbarBrand tag={Link} to="/">{`¡Hola, ${user.first_name}!`}</NavbarBrand>
           <NavbarToggler onClick={toggle} />
           <Collapse isOpen={isOpen} navbar>
             <Nav className="mr-auto" navbar>
@@ -64,7 +67,7 @@ const Navigation = (props) => {
             <NavbarText>Simple Text</NavbarText>
           </Collapse>
         </Navbar>
-        <Redirect to="/home" />
+        <Redirect to="/perrito" />
       </div>);
   }
   

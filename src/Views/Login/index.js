@@ -3,15 +3,18 @@ import { AuthContext } from '../../context/AuthContext'
 import axios from 'axios'
 import { Button, Form, FormGroup, Label, Input, InputGroup, InputGroupText, InputGroupAddon, Container, Col, FormText } from 'reactstrap';
 import './login.css'
+import decode from 'jwt-decode'
 
 function Login() {
 
-    // TODO explicar la parte de useContext minuto 2:44:20
-    // DESDE ESE MINUTO 
-
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const { setToken, setIsAuth } = useContext(AuthContext)
+    const { setToken, setIsAuth, setUser } = useContext(AuthContext)
+
+    const loginUser = async (_item) => {
+        const user = await decode(_item)
+        setUser(user)
+      }
 
     const handleForm = async (e) => {
         e.preventDefault()
@@ -20,10 +23,14 @@ function Login() {
             try {
             const res = await axios.post(LOGIN_URI, jsonSend)
             localStorage.setItem('tokenSaurio', res.data.token)
-            setToken(res.data.token)
-            setIsAuth(true)              
+            const tokenItem = localStorage.getItem('tokenSaurio')
+            setToken(tokenItem)
+            setIsAuth(true)
+            loginUser(tokenItem)
+                                                  
             } catch (error) {
-                console.log(error)                
+                console.log(error)
+                alert('error al escribir el usuario o contraseña')              
             }
     }
 
