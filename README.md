@@ -63,3 +63,11 @@ Este hook esta al "pendiente" de algun cambio valor de una variable, declarada d
 En este ejemplo y uso que se le da dentro de esta aplicación, se declara useEffect dentro de la funcion le damos un valor al token y estado del usuario (setIsAuth)
 al declarar el arreglo como vacio, le decimos a nuestra aplicacion que solo se ejecute una vez. 
 
+## Proteger Rutras y Redireccionamientos. 
+
+Asi de simple al redenrizar complementos 
+
+````javascript
+    const { isAuth } = useContext(AuthContext)
+    if(!isAuth) return <Redirect to='/login' />
+````

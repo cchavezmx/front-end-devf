@@ -4,21 +4,22 @@ import decode from 'jwt-decode'
 export const AuthContext = createContext();
 
 const AuthContextProvider = (props) => { 
-  const [token, setToken] = useState('')
   const [isAuth, setIsAuth]  = useState(false);
   const [user, setUser] = useState('')
 
+     // Se refactorizaron las funciones de Login y Logout
+
   const loginUser = async (token) => {
     localStorage.setItem('tokenSaurio', token)
-    setToken(token)
     const user = await decode(token)
     setUser(user)
     setIsAuth(true)
   }
 
+    // Se refactorizaron las funciones de Login y Logout
+
   const logoutUser = async () => {
     localStorage.removeItem('tokenSaurio')
-    setToken('')
     setUser({});
     setIsAuth(false);
   }
@@ -26,7 +27,6 @@ const AuthContextProvider = (props) => {
   useEffect(() => {
     const item = localStorage.getItem('tokenSaurio')
     if(item) {
-      setToken(item)
       const decoded = decode(item)
       setIsAuth(true)
       setUser(decoded)
@@ -35,7 +35,6 @@ const AuthContextProvider = (props) => {
   
   return (
     <AuthContext.Provider value={{
-     token, setToken,
      isAuth, setIsAuth,
      user, loginUser, logoutUser
      

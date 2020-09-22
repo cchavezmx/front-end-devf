@@ -15,8 +15,7 @@ function Logout() {
   // //Elimna el token guardado
   //   localStorage.removeItem('tokenSaurio')
 
-  const { logoutUser } = useContext(AuthContext)
-  
+  const { logoutUser } = useContext(AuthContext)  
   logoutUser()
 
     return (

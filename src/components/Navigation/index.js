@@ -67,7 +67,7 @@ const Navigation = (props) => {
             <NavbarText>Simple Text</NavbarText>
           </Collapse>
         </Navbar>
-        <Redirect to="/perrito" />
+        <Redirect to="/users" />
       </div>);
   }
   
